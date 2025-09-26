@@ -1,0 +1,66 @@
+/* FindDoctorSearch.css */
+
+.BC-finddoctor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.BC-search_container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.BC-home-search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.BC-doctor-search-box {
+    position: relative;
+    width: 100%;
+}
+
+.BC-search-doctor-input-box {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid rgb(212, 212, 212);
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+
+.BC-search-doctor-input-box:focus {
+    border-color: rgb(180, 180, 180);
+}
+
+.BC-search-doctor-input-results {
+    position: absolute;
+    width: 100%;
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: white;
+    border: 2px solid rgb(212, 212, 212);
+    border-radius: 5px;
+    margin-top: 1px;
+    z-index: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.BC-search-doctor-result-item {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--results-text-color);
+}
+
+.BC-search-doctor-result-item:hover {
+    color: rgb(68, 68, 255)
+}

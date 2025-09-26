@@ -1,0 +1,112 @@
+/* Styles for the main container */
+body {
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_container {
+    margin-top: 100px;
+    max-width: 400px; /* Maximum width of the container */
+    justify-content: center;
+    align-items: center;
+    padding: 40px; /* Padding inside the container */
+}
+
+/* Styles for the main signup text */
+.login-text {
+    margin-top: 30px; /* Add top margin */
+    text-align: center; /* Center-align text */
+}
+
+.login-text1 span {
+    color: #3c79a7; /* Set text color */
+    font-weight: 600; /* Set font weight to bold */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.forgot-password-text {
+    text-align: left;
+}
+
+/* Styles for form groups */
+.login-form-group {
+    margin-bottom: 20px; /* Bottom margin for spacing between form groups */
+}
+
+/* Styles for form group labels */
+.login-form-group label {
+    display: block; /* Make labels display as block elements */
+    margin-bottom: 5px; /* Bottom margin for spacing below labels */
+    font-weight: bold; /* Bold text for labels */
+}
+
+/* Styles for form controls */
+.login-form-control {
+    padding: 8px; /* Padding inside form controls */
+    font-size: 16px; /* Font size of form controls */
+    border: 1px solid #ccc; /* Border around form controls */
+    border-radius: 4px; /* Border radius for rounded corners */
+}
+
+/* Styles for buttons */
+.login-btn {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    margin: auto 10px;
+    margin-bottom: 10px;
+    padding: 10px 20px; /* Match padding */
+    font-size: 16px; /* Match font size */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100px;
+}
+
+.login-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Primary Button */
+.login-btn-primary {
+    background-color: #007bff; /* Same background color */
+    color: #fff; /* Same text color */
+}
+
+.login-btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Danger Button */
+.login-btn-danger {
+    background-color: #dc3545; /* Same background color */
+    color: #fff; /* Same text color */
+}
+
+.login-btn-danger:hover {
+    background-color: #a71d2a;
+}
+
+.password-container {
+    position: relative; /* Ensure button stays inside the input field */
+    display: flex; /* Make the container flex */
+}
+
+.password-toggle-text {
+    position: absolute;
+    right: 10px; /* Position to the left inside the input */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 14px;
+    padding-right: 10px; /* Avoid overlap with input text */
+    color: #007bff;
+}
+
+.password-toggle-text:hover {
+    color: #0056b3;
+}
