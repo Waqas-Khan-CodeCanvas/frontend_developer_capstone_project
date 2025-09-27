@@ -159,11 +159,11 @@ const ProfileForm = () => {
             <div className="space-y-3 text-gray-700">
               <p>
                 <span className="font-semibold text-gray-800">Email:</span>{" "}
-                {userDetails.email}
+                {userDetails.email || "waqaskhan@gmail.com"}
               </p>
               <p>
                 <span className="font-semibold text-gray-800">Phone:</span>{" "}
-                {userDetails.phone || "Not provided"}
+                {userDetails.phone || "0345209379527"}
               </p>
             </div>
             <button
