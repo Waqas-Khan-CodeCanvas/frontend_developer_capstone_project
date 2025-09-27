@@ -20,7 +20,6 @@ The platform enables users to view available slots, select providers, manage the
 cd frontend_developer_capstone_project 
 npm install
 npm i react-router-dom
-npm install --save-dev web-vitals
 npm i reactjs-popup
 npm install dotenv
 cd server

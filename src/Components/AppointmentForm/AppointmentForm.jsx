@@ -23,10 +23,10 @@ function AppointmentForm({ doctorName, doctorSpecialty, onSubmit }) {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-6">
+    <div className="flex justify-center items-center  bg-gradient-to-br from-blue-50 to-blue-100 ">
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-lg rounded-2xl w-full max-w-md p-8 space-y-6 border border-gray-100"
+        className="bg-white shadow-lg rounded-2xl w-full  p-8  border border-gray-100"
       >
         <h2 className="text-2xl font-bold text-center text-blue-700">
           Book Appointment
@@ -41,7 +41,7 @@ function AppointmentForm({ doctorName, doctorSpecialty, onSubmit }) {
           </div>
         )}
 
-        <div className="space-y-2">
+        <div className="spa">
           <label htmlFor="name" className="block text-gray-700 font-medium">
             Full Name
           </label>
@@ -49,14 +49,14 @@ function AppointmentForm({ doctorName, doctorSpecialty, onSubmit }) {
             type="text"
             id="name"
             value={name}
-            placeholder="e.g. John Doe"
+            placeholder="e.g. waqas khan"
             onChange={(e) => setName(e.target.value)}
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-4  border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
 
-        <div className="space-y-2">
+        <div className="">
           <label htmlFor="phoneNumber" className="block text-gray-700 font-medium">
             Phone Number
           </label>
@@ -64,14 +64,14 @@ function AppointmentForm({ doctorName, doctorSpecialty, onSubmit }) {
             type="tel"
             id="phoneNumber"
             value={phoneNumber}
-            placeholder="e.g. 8885551234"
+            placeholder="e.g. 0455551234"
             onChange={(e) => setPhoneNumber(e.target.value)}
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
 
-        <div className="space-y-2">
+        <div className="">
           <label htmlFor="bookingDate" className="block text-gray-700 font-medium">
             Appointment Date
           </label>
@@ -81,17 +81,17 @@ function AppointmentForm({ doctorName, doctorSpecialty, onSubmit }) {
             value={bookingDate}
             onChange={(e) => setBookingDate(e.target.value)}
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-4  border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
 
-        <div className="space-y-2">
+        <div className="">
           <label htmlFor="timeSlot" className="block text-gray-700 font-medium">
             Time Slot
           </label>
           <select
             id="timeSlot"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-4  border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             value={timeSlot}
             onChange={handleSelection}
             required
@@ -108,7 +108,7 @@ function AppointmentForm({ doctorName, doctorSpecialty, onSubmit }) {
 
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-200"
+          className="w-full bg-blue-600 text-white  rounded-lg font-semibold hover:bg-blue-700 transition-all duration-200"
         >
           Book Now
         </button>

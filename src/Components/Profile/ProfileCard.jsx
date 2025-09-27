@@ -1,43 +1,35 @@
-// Following code has been commented with appropriate comments for your reference. 
-// Import necessary modules from React and other files
 import React, { useEffect, useState } from "react";
-// import { API_URL } from "../../config";
 import { useNavigate } from "react-router-dom";
-import "./ProfileCard.css"
 
-// Define a Function component called ProfileForm
 const ProfileForm = () => {
-  // Set up state variables using the useState hook
   const [userDetails, setUserDetails] = useState({});
   const [updatedDetails, setUpdatedDetails] = useState({});
   const [editMode, setEditMode] = useState(false);
-  
-  // Access the navigation functionality from React Router
+
   const navigate = useNavigate();
-  
-  // Use the useEffect hook to fetch user profile data when the component mounts or updates
+
   useEffect(() => {
     const authtoken = sessionStorage.getItem("auth-token");
     if (!authtoken) {
-      navigate("/frontend_developer_capstone_project/login");
+      navigate("/login");
     } else {
       fetchUserProfile();
     }
   }, [navigate]);
 
-  // Function to fetch user profile data from the API
   const fetchUserProfile = async () => {
     try {
       const authtoken = sessionStorage.getItem("auth-token");
-      const email = sessionStorage.getItem("email"); // Get the email from session storage
+      const email = sessionStorage.getItem("email");
 
       if (!authtoken) {
         navigate("/login");
       } else {
-        const response = await fetch(`${API_URL}/api/auth/user`, {
+        // Replace API_URL with your actual endpoint
+        const response = await fetch(`/api/auth/user`, {
           headers: {
-            "Authorization": `Bearer ${authtoken}`,
-            "Email": email, // Add the email to the headers
+            Authorization: `Bearer ${authtoken}`,
+            Email: email,
           },
         });
         if (response.ok) {
@@ -45,22 +37,16 @@ const ProfileForm = () => {
           setUserDetails(user);
           setUpdatedDetails(user);
         } else {
-          // Handle error case
           throw new Error("Failed to fetch user profile");
         }
       }
     } catch (error) {
       console.error(error);
-      // Handle error case
     }
   };
 
-  // Function to enable edit mode for profile details
-  const handleEdit = () => {
-    setEditMode(true);
-  };
+  const handleEdit = () => setEditMode(true);
 
-  // Function to update state when user inputs new data
   const handleInputChange = (e) => {
     setUpdatedDetails({
       ...updatedDetails,
@@ -68,13 +54,11 @@ const ProfileForm = () => {
     });
   };
 
-  // Function to handle form submission when user saves changes
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const authtoken = sessionStorage.getItem("auth-token");
-      const email = sessionStorage.getItem("email"); // Get the email from session storage
+      const email = sessionStorage.getItem("email");
 
       if (!authtoken || !email) {
         navigate("/login");
@@ -82,87 +66,117 @@ const ProfileForm = () => {
       }
 
       const payload = { ...updatedDetails };
-      const response = await fetch(`${API_URL}/api/auth/user`, {
+      const response = await fetch(`/api/auth/user`, {
         method: "PUT",
         headers: {
-          "Authorization": `Bearer ${authtoken}`,
+          Authorization: `Bearer ${authtoken}`,
           "Content-Type": "application/json",
-          "Email": email,
+          Email: email,
         },
         body: JSON.stringify(payload),
       });
 
       if (response.ok) {
-        // Update the user details in session storage
         sessionStorage.setItem("name", updatedDetails.name);
         sessionStorage.setItem("phone", updatedDetails.phone);
-
         setUserDetails(updatedDetails);
         setEditMode(false);
-        // Display success message to the user
-        alert(`Profile Updated Successfully!`);
+        alert("Profile Updated Successfully!");
         navigate("/");
       } else {
-        // Handle error case
         throw new Error("Failed to update profile");
       }
     } catch (error) {
       console.error(error);
-      // Handle error case
     }
   };
 
-  // Render the profile form with different sections based on edit mode
   return (
-    <div className="profile-card-container">
-      {editMode ? (
-        <form onSubmit={handleSubmit}>
-          
-          <label>
-            Email
-            <input
-              className="email-field"
-              type="email"
-              name="email"
-              value={userDetails.email}
-              disabled // Disable the email field
-            />
-          </label>
-          
-          <label>
-            Name
-            <input
-              type="text"
-              name="name"
-              value={updatedDetails.name}
-              onChange={handleInputChange}
-            />
-          </label>
-       
-          <label>
-            Phone
-            <input
-              type="text"
-              name="phone"
-              value={updatedDetails.phone}
-              onChange={handleInputChange}
-            />
-          </label>
-          
-          <button type="submit">Save</button>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 px-4">
+      <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md">
+        {editMode ? (
+          <>
+            <h2 className="text-2xl font-semibold text-blue-700 mb-6 text-center">
+              Edit Profile
+            </h2>
+            <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Email (Read-only) */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={userDetails.email || ""}
+                  disabled
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-100 text-gray-600 cursor-not-allowed"
+                />
+              </div>
 
-        </form>
-      ) : (
-        <div className="profile-details">
-          <h1>Welcome, {userDetails.name}</h1>
-          <p> <b>Email:</b> {userDetails.email}</p>
-          <p><b>Phone:</b> {userDetails.phone}</p>
-          <button onClick={handleEdit}>Edit</button>
-        </div>
-      )}
+              {/* Name */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={updatedDetails.name || ""}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                />
+              </div>
+
+              {/* Phone */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Phone
+                </label>
+                <input
+                  type="text"
+                  name="phone"
+                  value={updatedDetails.phone || ""}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                />
+              </div>
+
+              {/* Save Button */}
+              <button
+                type="submit"
+                className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
+              >
+                Save Changes
+              </button>
+            </form>
+          </>
+        ) : (
+          <>
+            <h2 className="text-2xl font-semibold text-blue-700 mb-4 text-center">
+              Welcome, {userDetails.name || "User"}
+            </h2>
+            <div className="space-y-3 text-gray-700">
+              <p>
+                <span className="font-semibold text-gray-800">Email:</span>{" "}
+                {userDetails.email}
+              </p>
+              <p>
+                <span className="font-semibold text-gray-800">Phone:</span>{" "}
+                {userDetails.phone || "Not provided"}
+              </p>
+            </div>
+            <button
+              onClick={handleEdit}
+              className="mt-6 w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
+            >
+              Edit Profile
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
 };
 
-// Export the ProfileForm component as the default export
 export default ProfileForm;

@@ -53,9 +53,9 @@ function BookingConsultation() {
   }, [searchParams, navigate]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-12">
+    <div className="bg-gradient-to-b from-blue-50 to-white py-12">
       {/* Search Section */}
-      <div className="max-w-5xl mx-auto">
+      <div className=" mx-auto">
         <FindDoctorSearch onSearch={handleSearch} />
       </div>
 
