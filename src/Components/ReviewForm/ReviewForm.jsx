@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './ReviewForm.css';
 
 const currentReviews = [
     { id: 1, name: "Dr. Ben Howell", specialty: "General physician", feedback: 'Great work, very helpful', reviewGiven: true },
@@ -48,72 +47,127 @@ const ReviewsAndFeedback = () => {
     }
   };
 
-  return (
-    <div className='review-form-container'>
-      {!showForm && (
-        <>
-          <h1>Reviews</h1>
-          <table>
+return (
+  <div className="max-w-6xl mx-auto p-6">
+    {!showForm && (
+      <>
+        <h1 className="text-3xl font-bold mb-6 text-gray-800">Reviews</h1>
+        <div className="overflow-x-auto shadow rounded-lg border border-gray-200 mb-6">
+          <table className="min-w-full bg-white">
             <thead>
-              <tr>
-                <th>Serial Number</th>
-                <th>Doctor Name</th>
-                <th>Doctor Specialty</th>
-                <th className='provide-feedback'>Provide feedback</th>
-                <th>Review Given</th>
+              <tr className="bg-gray-100 text-gray-700 text-left text-sm uppercase">
+                <th className="px-6 py-3">Serial Number</th>
+                <th className="px-6 py-3">Doctor Name</th>
+                <th className="px-6 py-3">Specialty</th>
+                <th className="px-6 py-3">Feedback</th>
+                <th className="px-6 py-3">Review Given</th>
               </tr>
             </thead>
             <tbody>
               {reviews.map((review, index) => (
-                <tr key={review.id}>
-                  <td>{index + 1}</td>
-                  <td>{review.name}</td>
-                  <td>{review.specialty}</td>
-                  <td className='provide-feedback'>{review.feedback}</td>
-                  <td>{review.reviewGiven ? 'Yes' : 'No'}</td>
+                <tr key={review.id} className="border-t hover:bg-gray-50">
+                  <td className="px-6 py-4 text-sm">{index + 1}</td>
+                  <td className="px-6 py-4 text-sm">{review.name}</td>
+                  <td className="px-6 py-4 text-sm">{review.specialty}</td>
+                  <td className="px-6 py-4 text-sm text-gray-600">{review.feedback}</td>
+                  <td className="px-6 py-4 text-sm font-semibold">
+                    {review.reviewGiven ? '✅ Yes' : '❌ No'}
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <button 
-            className='review-form-submit' 
-            onClick={handleFeedback} 
-            disabled={hasSubmittedReview}
-            style={{ backgroundColor: hasSubmittedReview ? 'gray' : '', cursor: hasSubmittedReview ? 'not-allowed': 'pointer' }}
-          >
-            Submit a Review
-          </button>
-        </>
-      )}
-
-      {showForm && (
-        <form onSubmit={handleSubmit}>
-          <h2>Give Your Feedback</h2>
-          {showWarning && <p className="warning">Please fill out all fields.</p>}
-          <div>
-            <label htmlFor="name">Doctor's Name:</label>
-            <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} />
-          </div>
-          <div>
-            <label htmlFor="review">Review:</label>
-            <textarea id="review" name="review" value={formData.review} onChange={handleChange} />
-          </div>
-          <div>
-            <label htmlFor="rating">Rating:</label>
-            <input type="number" id="rating" name="rating" value={formData.rating} onChange={handleChange} min="0" max="5" />
-          </div>
-          <button type="submit">Submit</button>
-        </form>
-      )}
-
-      {submittedMessage && (
-        <div className='submit-message'>
-          <h3>Submitted Message:</h3>
-          <p>{submittedMessage}</p>
         </div>
-      )}
-    </div>
-  );
+
+        <button
+          className={`px-6 py-2 rounded text-white font-semibold transition ${
+            hasSubmittedReview
+              ? 'bg-gray-400 cursor-not-allowed'
+              : 'bg-blue-600 hover:bg-blue-700'
+          }`}
+          onClick={handleFeedback}
+          disabled={hasSubmittedReview}
+        >
+          Submit a Review
+        </button>
+      </>
+    )}
+
+    {showForm && (
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white shadow-lg rounded-lg p-6 space-y-5 border border-gray-200"
+      >
+        <h2 className="text-2xl font-semibold text-gray-800">Give Your Feedback</h2>
+
+        {showWarning && (
+          <p className="text-red-500 text-sm font-medium">⚠️ Please fill out all fields.</p>
+        )}
+
+        <div>
+          <label htmlFor="name" className="block font-medium text-sm text-gray-700 mb-1">
+            Doctor's Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Dr. John Doe"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="review" className="block font-medium text-sm text-gray-700 mb-1">
+            Review
+          </label>
+          <textarea
+            id="review"
+            name="review"
+            value={formData.review}
+            onChange={handleChange}
+            rows="4"
+            className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Write your feedback here..."
+          />
+        </div>
+
+        <div>
+          <label htmlFor="rating" className="block font-medium text-sm text-gray-700 mb-1">
+            Rating (0 - 5)
+          </label>
+          <input
+            type="number"
+            id="rating"
+            name="rating"
+            value={formData.rating}
+            onChange={handleChange}
+            min="0"
+            max="5"
+            className="w-24 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition duration-200"
+        >
+          Submit
+        </button>
+      </form>
+    )}
+
+    {submittedMessage && (
+      <div className="mt-6 p-4 text-center">
+        <h3 className="text-lg font-medium text-green-800 mb-1">Submitted Message:</h3>
+        <p className="text-green-700 text-sm">{submittedMessage}</p>
+      </div>
+    )}
+  </div>
+);
+
 };
 
 export default ReviewsAndFeedback;

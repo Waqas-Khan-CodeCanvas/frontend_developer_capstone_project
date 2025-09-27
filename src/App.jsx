@@ -12,7 +12,7 @@ import BookingConsultation from './Components/BookingConsultation';
 import Notification from './Components/Notification/Notification';
 import ReviewForm from './Components/ReviewForm/ReviewForm';
 import { NotificationProvider } from './Components/Notification/NotificationContext';
-import HealthTips from './Components/HealthTips/HealthTips';
+import HealthBlog from './Components/HealthBlog/HealthBlog';
 import SelfCheckup from './Components/SelfCheckup/SelfCheckup';
 import PageNotFound from './Components/PageNotFound';
 
@@ -23,18 +23,18 @@ function App() {
         <Notification />
         {/* <Navbar /> */}
         <Routes>
-          <Route path="/frontend_developer_capstone_project" element={<LandingPage />} />
-          <Route path="/frontend_developer_capstone_project/login" element={<Login />} />
-          <Route path="/frontend_developer_capstone_project/signup" element={<SignUp />} />
-          <Route path="/frontend_developer_capstone_project/profile" element={<ProfileCard />} />
-          <Route path="/frontend_developer_capstone_project/reports" element={<Reports />} />
-          <Route path="/frontend_developer_capstone_project/services" element={<Services />} />
-          <Route path="/frontend_developer_capstone_project/instant-consultation" element={<InstantConsultation />} />
-          <Route path="/frontend_developer_capstone_project/booking-consultation" element={<BookingConsultation />} />
-          <Route path='/frontend_developer_capstone_project/review-form' element={<ReviewForm />} />
-          <Route path='/frontend_developer_capstone_project/health-tips' element={<HealthTips />} />
-          <Route path='/frontend_developer_capstone_project/self-checkup' element={<SelfCheckup />} />
-          <Route path="/frontend_developer_capstone_project/*" element={<PageNotFound />} />
+          <Route path="" element={<LandingPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/profile" element={<ProfileCard />} />
+          <Route path="/reports" element={<Reports />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/instant-consultation" element={<InstantConsultation />} />
+          <Route path="/booking-consultation" element={<BookingConsultation />} />
+          <Route path='/review-form' element={<ReviewForm />} />
+          <Route path='/HealthBlog' element={<HealthBlog />} />
+          <Route path='/self-checkup' element={<SelfCheckup />} />
+          <Route path="/*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </NotificationProvider>

@@ -18,30 +18,30 @@ function Reports() {
             <tbody>
               <tr>
                 <td>1</td>
-                <td>Dr. John Doe</td>
+                <td>Dr. waqas khan</td>
                 <td>Cardiology</td>
                 <td>
-                  <a href="/frontend_developer_capstone_project/patient_report.pdf" target="_blank" rel="noopener noreferrer">
+                  <a href="/patient_report.pdf" target="_blank" rel="noopener noreferrer">
                     <button>View Report</button>
                   </a>
                 </td>
                 <td>
-                  <a href="/frontend_developer_capstone_project/patient_report.pdf" download>
+                  <a href="/patient_report.pdf" download>
                     <button>Download Report</button>
                   </a>
                 </td>
               </tr>
               <tr>
                 <td>2</td>
-                <td>Dr. Jane Smith</td>
+                <td>Dr. zaryab khan</td>
                 <td>Dermatology</td>
                 <td>
-                  <a href="/frontend_developer_capstone_project/patient_report.pdf" target="_blank" rel="noopener noreferrer">
+                  <a href="/patient_report.pdf" target="_blank" rel="noopener noreferrer">
                     <button>View Report</button>
                   </a>
                 </td>
                 <td>
-                  <a href="/frontend_developer_capstone_project/patient_report.pdf" download>
+                  <a href="/patient_report.pdf" download>
                     <button>Download Report</button>
                   </a>
                 </td>

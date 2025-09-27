@@ -32,7 +32,7 @@ const ProfileForm = () => {
       const email = sessionStorage.getItem("email"); // Get the email from session storage
 
       if (!authtoken) {
-        navigate("/frontend_developer_capstone_project/login");
+        navigate("/login");
       } else {
         const response = await fetch(`${API_URL}/api/auth/user`, {
           headers: {
@@ -77,7 +77,7 @@ const ProfileForm = () => {
       const email = sessionStorage.getItem("email"); // Get the email from session storage
 
       if (!authtoken || !email) {
-        navigate("/frontend_developer_capstone_project/login");
+        navigate("/login");
         return;
       }
 
@@ -101,7 +101,7 @@ const ProfileForm = () => {
         setEditMode(false);
         // Display success message to the user
         alert(`Profile Updated Successfully!`);
-        navigate("/frontend_developer_capstone_project");
+        navigate("/");
       } else {
         // Handle error case
         throw new Error("Failed to update profile");

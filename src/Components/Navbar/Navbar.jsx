@@ -78,11 +78,10 @@ function Navbar() {
       {/* Logo */}
       <div className="flex items-center gap-2">
         <Link
-          to="/frontend_developer_capstone_project"
+          to="/"
           className="flex items-center gap-2 text-2xl font-semibold text-gray-900 no-underline"
         >
           StayHealthy🩺
-          {/* <UserCircleIcon className="w-8 h-8 text-blue-500 inline-block" /> */}
         </Link>
       </div>
 
@@ -105,7 +104,7 @@ function Navbar() {
         >
           <li>
             <Link
-              to="/frontend_developer_capstone_project"
+              to="/"
               onClick={hideMenu}
               className="text-gray-800 hover:text-blue-600 font-medium"
             >
@@ -114,7 +113,7 @@ function Navbar() {
           </li>
           <li>
             <Link
-              to="/frontend_developer_capstone_project/appointments"
+              to="/appointments"
               onClick={hideMenu}
               className="text-gray-800 hover:text-blue-600 font-medium"
             >
@@ -123,7 +122,7 @@ function Navbar() {
           </li>
           <li>
             <Link
-              to="/frontend_developer_capstone_project/health-tips"
+              to="/HealthBlog"
               onClick={hideMenu}
               className="text-gray-800 hover:text-blue-600 font-medium"
             >
@@ -132,7 +131,7 @@ function Navbar() {
           </li>
           <li>
             <Link
-              to="/frontend_developer_capstone_project/review-form"
+              to="/review-form"
               onClick={hideMenu}
               className="text-gray-800 hover:text-blue-600 font-medium"
             >
@@ -163,7 +162,7 @@ function Navbar() {
             <>
               <li>
                 <Link
-                  to="/frontend_developer_capstone_project/signup"
+                  to="/signup"
                   onClick={hideMenu}
                 >
                   <button className="border border-blue-400 text-blue-600 font-medium rounded-full px-5 py-2 hover:bg-blue-50 transition duration-200">
@@ -173,7 +172,7 @@ function Navbar() {
               </li>
               <li>
                 <Link
-                  to="/frontend_developer_capstone_project/login"
+                  to="/login"
                   onClick={hideMenu}
                 >
                   <button className="border border-blue-400 text-blue-600 font-medium rounded-full px-5 py-2 hover:bg-blue-50 transition duration-200">

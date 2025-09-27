@@ -1,110 +1,143 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import "./Login.css";
+import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline'; // <-- imported icons
 
 function Login() {
-    // State variables for email, password, and password visibility toggle
-    const [password, setPassword] = useState("password123");
-    const [email, setEmail] = useState("demo_profile@example.com");
-    const [showPassword, setShowPassword] = useState(false);
+  const [password, setPassword] = useState("admin123");
+  const [email, setEmail] = useState("waqaskhan@gmail.com");
+  const [showPassword, setShowPassword] = useState(false);
 
-    // Get navigation function from react-router-dom
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    // Check if user is already authenticated, then redirect to home page
-    useEffect(() => {
-        if (sessionStorage.getItem("auth-token")) {
-            navigate("/frontend_developer_capstone_project");
-        }
-    }, []);
+  useEffect(() => {
+    if (sessionStorage.getItem("auth-token")) {
+      navigate("/");
+    }
+  }, []);
 
-    // Function to handle login form submission
-    const login = async (e) => {
-        e.preventDefault();
-        // Simulate authentication for demo purposes
-        const demoEmail = "demo_profile@example.com";
-        const demoPassword = "password123";
+  const login = async (e) => {
+    e.preventDefault();
+    const demoEmail = "waqaskhan@gmail.com";
+    const demoPassword = "admin123";
 
-        if (email === demoEmail && password === demoPassword) {
-            // Simulate successful authentication
-            sessionStorage.setItem('auth-token', 'demo-auth-token');
-            sessionStorage.setItem('email', email);
-            // Redirect to home page and reload the window
-            navigate('/frontend_developer_capstone_project');
-            window.location.reload();
-        } else {
-            // Simulate error for invalid credentials
-            alert("Invalid email or password. Please use demo_profile@example.com and password123.");
-        }
-    };
+    if (email === demoEmail && password === demoPassword) {
+      sessionStorage.setItem('auth-token', 'demo-auth-token');
+      sessionStorage.setItem('email', email);
+      navigate('/');
+      window.location.reload();
+    } else {
+      alert("Invalid email or password. Please use waqaskhan@gmail.com and admin123.");
+    }
+  };
 
-    const resetForm = () => {
-        setEmail("");
-        setPassword("");
-    };
+  const resetForm = () => {
+    setEmail("");
+    setPassword("");
+  };
 
-    const toggleShowPassword = () => {
-        setShowPassword(!showPassword);
-    };
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
-    return (
-        <div className="login_container">
-            {/* Div for login text */}
-            <div className="login-text">
-                <h2>Login</h2>
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4">
+      <div className="w-full max-w-md bg-white/80 backdrop-blur-md border border-blue-100 rounded-2xl shadow-lg p-8">
+        <h2 className="text-3xl font-bold text-center text-blue-700 mb-2">
+          Welcome Back
+        </h2>
+        <p className="text-sm text-center text-gray-600 mb-6">
+          New here?{" "}
+          <Link
+            to="/frontend_developer_capstone_project/signup"
+            className="text-blue-600 font-semibold hover:underline"
+          >
+            Create an account
+          </Link>
+        </p>
+
+        <form onSubmit={login} className="space-y-5">
+          {/* Email */}
+          <div>
+            <label
+              htmlFor="email"
+              className="block font-semibold text-gray-700 mb-1"
+            >
+              Email
+            </label>
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              id="email"
+              placeholder="you@example.com"
+              className="w-full border border-gray-300 px-4 py-2.5 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-400 transition duration-200"
+              required
+            />
+          </div>
+
+          {/* Password */}
+          <div>
+            <label
+              htmlFor="password"
+              className="block font-semibold text-gray-700 mb-1"
+            >
+              Password
+            </label>
+            <div className="relative">
+              <input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                type={showPassword ? "text" : "password"}
+                id="password"
+                placeholder="Enter your password"
+                className="w-full border border-gray-300 px-4 py-2.5 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-400 pr-12 transition duration-200"
+                required
+              />
+              <button
+                type="button"
+                onClick={toggleShowPassword}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-blue-500"
+              >
+                {showPassword ? (
+                  <EyeSlashIcon className="h-5 w-5" />
+                ) : (
+                  <EyeIcon className="h-5 w-5" />
+                )}
+              </button>
             </div>
-            {/* Additional login text with a link to Sign Up page */}
-            <div className="login-text1"> Are you a new member? <span><Link to="/frontend_developer_capstone_project/signup" style={{ color: '#2190FF' }}> Sign Up Here</Link></span>
-            </div><br />
+          </div>
 
-            {/* Div for login form */}
-            <div className="login-form">
-                <form onSubmit={login}>
-                    {/* Form group for email input */}
-                    <div className="login-form-group">
-                        <label htmlFor="email">Email</label>
-                        <input value={email} onChange={(e) => setEmail(e.target.value)}
-                               type="email"
-                               name="email"
-                               id="email"
-                               className="login-form-control"
-                               placeholder="Enter your email"
-                               aria-describedby="helpId"
-                        />
-                    </div>
+          {/* Buttons */}
+          <div className="flex flex-col space-y-3 pt-2">
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white py-2.5 rounded-xl font-semibold shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-300"
+            >
+              Sign In
+            </button>
+            <button
+              type="button"
+              onClick={resetForm}
+              className="w-full bg-red-500 text-white py-2 rounded-xl font-semibold shadow-sm hover:bg-red-600 transition-all duration-300"
+            >
+              Reset
+            </button>
+          </div>
 
-                    {/* Form group for password input */}
-                    <div className="login-form-group">
-                        <label htmlFor="password">Password</label>
-                        <div className="password-container">
-                            <input value={password} onChange={(e) => setPassword(e.target.value)}
-                                   type={showPassword ? "text" : "password"}
-                                   name="password"
-                                   id="password"
-                                   className="login-form-control"
-                                   placeholder="Enter your password"
-                                   aria-describedby="helpId"
-                            />
-                            <span className="password-toggle-text" onClick={toggleShowPassword}>
-                                {showPassword ? "Hide" : "Show"}
-                            </span>
-                        </div>
-                    </div>
-
-                    {/* Button group for login and reset buttons */}
-                    <div className="login-btn-group">
-                        <button type="submit" className="login-btn login-btn-primary mb-2 mr-1 waves-effect waves-light">Login</button>
-                        <button type="reset" onClick={resetForm} className="login-btn login-btn-danger mb-2 waves-effect waves-light">Reset</button>
-                    </div>
-                    <br />
-                    {/* Additional login text for 'Forgot Password' option */}
-                    <div className="forgot-password-text">
-                        <Link to="/frontend_developer_capstone_project/password-reset" style={{ color: '#2190FF' }}> Forgot Password? </Link>
-                    </div>
-                </form>
-            </div>
-        </div>
-    );
+          {/* Forgot Password */}
+          <div className="text-center mt-4">
+            <Link
+              to="/password-reset"
+              className="text-blue-600 text-sm font-medium hover:underline"
+            >
+              Forgot your password?
+            </Link>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 }
 
 export default Login;
